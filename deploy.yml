@@ -1,0 +1,8 @@
+---
+- name: Pull and Run docker image
+  hosts: all
+  tasks:
+    - name: Pull jaymeenk/calculator-spe
+      docker_image:
+        name: jaymeenk/calculator-spe
+        source: pull
