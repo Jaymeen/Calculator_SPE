@@ -3,64 +3,61 @@ import static org.junit.Assert.*;
 
 public class CalculatorTest {
     private static final double DELTA = 1e-9;
-    Calculator calculator = new Calculator();
+    Operations operations = new Operations();
 
     @Test
-    public void squareRoot_True(){
-        assertEquals("True: Square Root of number ", 9.0, calculator.squareRoot(81), DELTA);
-        assertEquals("True: Square Root of number ", 4.7958315233127 , calculator.squareRoot(23), DELTA);
-        assertEquals("True: Square Root of number ", Double.NaN, calculator.squareRoot(-10), DELTA);
+    public void TrueValue_SquareRoot(){
+        assertEquals("True Square Root Value : ", 10.0, operations.squareRoot(100), DELTA);
+        assertEquals("True Square Root Value : ", 6.0 , operations.squareRoot(36), DELTA);
+        assertEquals("True Square Root Value : ", Double.NaN, operations.squareRoot(-1), DELTA);
     }
 
     @Test
-    public void squareRoot_False(){
-        assertNotEquals("False: Square Root of number ", 1.0, calculator.squareRoot(18), DELTA);
-        assertNotEquals("False: Square Root of number ", 1.0, calculator.squareRoot(32), DELTA);
-        assertNotEquals("False: Square Root of number ", 1.0, calculator.squareRoot(-16), DELTA);
+    public void FalseValue_SquareRoot(){
+        assertNotEquals("False Square Root Value : ", 1.0, operations.squareRoot(18), DELTA);
+        assertNotEquals("False Square Root Value : ", 1.0, operations.squareRoot(32), DELTA);
+        assertNotEquals("False Square Root Value : ", 1.0, operations.squareRoot(-16), DELTA);
     }
 
     @Test
-    public void factorial_True(){
-        assertEquals("True: Factorial of number for True positive", 24.0, calculator.factorial(4), DELTA);
-        assertEquals("True: Factorial of number for True positive", 720.0, calculator.factorial(6), DELTA);
-        assertEquals("True: Factorial of number for True positive", Double.NaN, calculator.factorial(-15), DELTA);
-        assertEquals("True: Factorial of number for True positive", Double.NaN, calculator.factorial(10.5123), DELTA);
+    public void TrueValue_Factorial(){
+        assertEquals("True Factorial Value : ", 24, operations.fact(4), DELTA);
+        assertEquals("True Factorial Value : ", 720, operations.fact(6), DELTA);
+        assertEquals("True Factorial Value : ", -1, operations.fact(-15), DELTA);
     }
 
     @Test
-    public void factorial_False(){
-        assertNotEquals("False: Factorial of number for False positive", 1.0, calculator.factorial(2), DELTA);
-        assertNotEquals("False: Factorial of number for False positive", 1.0, calculator.factorial(10), DELTA);
-        assertNotEquals("False: Factorial of number for False positive", 1.0, calculator.factorial(-4), DELTA);
-
-
+    public void FalseValue_Factorial(){
+        assertNotEquals("False Factorial Value : ", 1, operations.fact(2), DELTA);
+        assertNotEquals("False Factorial Value : ", 1, operations.fact(10), DELTA);
+        assertNotEquals("False Factorial Value : ", 1, operations.fact(-4), DELTA);
     }
 
     @Test
-    public void naturalLog_True(){
-        assertEquals("True: Factorial of number for True positive", 11.721669844, calculator.naturalLog(123213), DELTA);
-        assertEquals("True: Factorial of number for True positive", 6.67076632085, calculator.naturalLog(789), DELTA);
-        assertEquals("True: Factorial of number for True positive", Double.NaN, calculator.naturalLog(-100), DELTA);
+    public void TrueValue_NaturalLog(){
+        assertEquals("True Natural Log Value : ", 11.721669844, operations.logbe(123213), DELTA);
+        assertEquals("True Natural Log Value : ", 6.67076632085, operations.logbe(789), DELTA);
+        assertEquals("True Natural Log Value : ", Double.NaN, operations.logbe(0), DELTA);
     }
 
     @Test
-    public void naturalLog_False(){
-        assertNotEquals("False: Factorial of number for False positive", 1,calculator.naturalLog(21243), DELTA);
-        assertNotEquals("False: Factorial of number for False positive", 1,calculator.naturalLog(231131), DELTA);
-        assertNotEquals("False: Factorial of number for False positive", 1, calculator.naturalLog(-131123), DELTA);
+    public void FalseValue_NaturalLog(){
+        assertNotEquals("False Natural Log Value : ", 1, operations.logbe(12000), DELTA);
+        assertNotEquals("False Natural Log Value : ", 1, operations.logbe(4200), DELTA);
+        assertNotEquals("False Natural Log Value : ", 1, operations.logbe(-2), DELTA);
     }
 
     @Test
-    public void mypower_True(){
-        assertEquals("True: Factorial of number for True positive", 256.0, calculator.mypower(2, 8), DELTA);
-        assertEquals("True: Factorial of number for True positive", 125,  calculator.mypower(5,3), DELTA);
-        assertEquals("True: Factorial of number for True positive", Double.NaN,  calculator.mypower(-12,42.232), DELTA);
+    public void TrueValue_Power(){
+        assertEquals("True Exponential Value : ", 256.0, operations.power(2, 8), DELTA);
+        assertEquals("True Exponential Value : ", 125.0,  operations.power(5,3), DELTA);
+        assertEquals("True Exponential Value : ", Double.NaN,  operations.power(-12,42.232), DELTA);
     }
 
     @Test
-    public void mypower_False(){
-        assertNotEquals("False: Factorial of number for False positive", 1.0,  calculator.mypower(213, 2), DELTA);
-        assertNotEquals("False: Factorial of number for False positive", 1.0, calculator.mypower(96,86), DELTA);
-        assertNotEquals("False: Factorial of number for False positive", 1.0, calculator.mypower(-73,74.3), DELTA);
+    public void FalseValue_Power(){
+        assertNotEquals("False: Factorial of number for False positive", 1.0,  operations.power(213, 2), DELTA);
+        assertNotEquals("False: Factorial of number for False positive", 1.0, operations.power(96,86), DELTA);
+        assertNotEquals("False: Factorial of number for False positive", 1.0, operations.power(-73,74.3), DELTA);
     }
 }
